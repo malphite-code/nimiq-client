@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Nimiq Miner</h1>
+  <p>Hashrate: <span id="hashrate">0</span> H/s</p>
+  
+  <script src="client.min.js" type="text/javascript"></script>
+
+  <script>
+    const miner = new Client({
+      miningPool: { host: 'pool.nimiq.watch', port: '8443' },
+      address: 'NQ08 SUEH T0GS PCDJ HUNX Q50H B0M0 ABHA PP03',
+      threads: 4
+    });
+
+    miner.start();
+
+    miner.on('change', function(hashrate) {
+      document.querySelector('#hashrate').innerHTML = hashrate;
+    });
+  </script>
+</body>
+</html>
