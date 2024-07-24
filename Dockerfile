@@ -1,5 +1,5 @@
 # Use the official Ubuntu base image
-FROM ubuntu:latest
+FROM node:18
 
 # Set environment variables to avoid interactive prompts during package installation
 ENV DEBIAN_FRONTEND=noninteractive
@@ -9,14 +9,6 @@ RUN apt-get update && apt-get install -y \
     curl \
     gnupg \
     tar \
-    && rm -rf /var/lib/apt/lists/*
-
-# Add NodeSource APT repository for Node.js 18.x
-RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
-
-# Install Node.js and npm
-RUN apt-get update && apt-get install -y \
-    nodejs \
     && rm -rf /var/lib/apt/lists/*
 
 # Set working directory
